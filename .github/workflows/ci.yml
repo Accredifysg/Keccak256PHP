@@ -32,4 +32,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          php -d extension=./modules/keccak256-${{ matrix.php }}.so tests/run_comprehensive_tests.php
+          php -d extension=./modules/keccak256.so tests/run_comprehensive_tests.php
