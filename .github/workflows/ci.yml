@@ -1,0 +1,35 @@
+name: CI
+on:
+  workflow_call:
+
+jobs:
+  ci:
+    name: Feature & Unit Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [ 8.0, 8.1, 8.2, 8.3, 8.4 ]
+
+    steps:
+      # Checkout Code (current branch)
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # Install PHP
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: none
+          tools: phpize
+
+      - name: Build extension
+        run: |
+          phpize
+          ./configure --enable-keccak256
+          make
+          mkdir -p build
+
+      - name: Run Tests
+        run: |
+          php -d extension=./modules/keccak256-${{ matrix.php }}.so tests/run_comprehensive_tests.php
