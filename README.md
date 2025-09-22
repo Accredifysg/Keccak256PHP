@@ -4,7 +4,7 @@ A modern PHP extension providing the `keccak256()` function for Ethereum develop
 
 ## Features
 
-- **Modern PHP Support**: Compatible with PHP 8.0, 8.1, 8.2, and 8.3
+- **Modern PHP Support**: Compatible with PHP 8.0, 8.1, 8.2, 8.3, and 8.4
 - **High Performance**: Native C implementation for optimal speed
 - **Proper Error Handling**: Comprehensive input validation with descriptive error messages
 - **Memory Safe**: Uses PHP's memory management system to prevent leaks
