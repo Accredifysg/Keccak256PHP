@@ -10,10 +10,13 @@ jobs:
         php: [ 8.0, 8.1, 8.2, 8.3, 8.4 ]
         arch: [x64, arm64]
         include:
+          # from 
+          # ARM: https://github.com/actions/runner-images 
+          # x86: https://github.com/actions/partner-runner-images
           - arch: x64
             runs-on: ubuntu-latest
           - arch: arm64
-            runs-on: ubuntu-latest
+            runs-on: ubuntu-24.04-arm
     
     runs-on: ${{ matrix.runs-on }}
 
