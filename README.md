@@ -51,6 +51,8 @@ A modern PHP extension providing the `keccak256()` function for Ethereum develop
    ```bash
    sudo cp modules/keccak256.so $(php-config --extension-dir)/
    ```
+   
+   **Note**: Pre-compiled binaries are available for both x86_64 and ARM64 architectures from the [releases page](https://github.com/Accredifysg/Keccak256PHP/releases).
 
 6. **Enable the extension:**
    
@@ -70,7 +72,21 @@ A modern PHP extension providing the `keccak256()` function for Ethereum develop
    php -m | grep keccak256
    ```
 
-### Method 2: Development Installation
+### Method 2: Pre-compiled Binary Installation
+
+Download the appropriate pre-compiled binary for your architecture:
+
+```bash
+# For x86_64 systems
+wget https://github.com/Accredifysg/Keccak256PHP/releases/latest/download/keccak256-8.3-x64.so
+sudo cp keccak256-8.3-x64.so $(php-config --extension-dir)/keccak256.so
+
+# For ARM64 systems (Apple Silicon, ARM64 Linux)
+wget https://github.com/Accredifysg/Keccak256PHP/releases/latest/download/keccak256-8.3-arm64.so
+sudo cp keccak256-8.3-arm64.so $(php-config --extension-dir)/keccak256.so
+```
+
+### Method 3: Development Installation
 
 For development or testing purposes:
 
@@ -181,7 +197,11 @@ Refer to tests/README.md for detailed instructions on running the test suites.
 ### Platform Support
 
 - **Linux**: Fully supported (Ubuntu, Debian, CentOS, RHEL, etc.)
+  - **x86_64**: Full support
+  - **ARM64/aarch64**: Full support
 - **macOS**: Supported with Xcode command line tools
+  - **Intel (x86_64)**: Full support  
+  - **Apple Silicon (ARM64)**: Full support
 - **Windows**: Limited support (requires proper build environment)
 
 ## Troubleshooting
